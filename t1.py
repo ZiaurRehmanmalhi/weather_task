@@ -1,4 +1,5 @@
 from main_read_files import read_files
+from constent import MappingIndex
 
 file_values = read_files()
 input_year = input("Enter the year: ")
@@ -11,10 +12,10 @@ lowest_temp_day = ""
 most_humidity_day = ""
 
 for file_value in file_values:
-    year = file_value[0].split("-")[0]
+    year = file_value[MappingIndex.date].split("-")[MappingIndex.date]
     if year == input_year:
-        temperatures = [float(temp) for temp in file_value[1]]
-        humidities = [float(humidity) for humidity in file_value[2]]
+        temperatures = [float(temp) for temp in file_value[MappingIndex.maximum_temperature]]
+        humidities = [float(humidity) for humidity in file_value[MappingIndex.humidity]]
         days = file_value[3]
 
         if temperatures:
@@ -40,3 +41,4 @@ if most_humidity_day != "":
     print(f"Humidity: {most_humidity}% on {most_humidity_day}")
 else:
     print("No humidity data available for the given year.")
+

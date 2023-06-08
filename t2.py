@@ -1,4 +1,5 @@
 from main_read_files import read_files
+from constent import MappingIndex
 
 file_values = read_files()
 
@@ -14,12 +15,12 @@ for file_value in file_values:
             temp_high = float(temp_high_str)
             temp_high_sum += temp_high
 
-        temp_low_str = file_value[3]
+        temp_low_str = file_value[MappingIndex.minimum_temperature]
         if temp_low_str:
             temp_low = float(temp_low_str)
             temp_low_sum += temp_low
 
-        humidity_str = file_value[7]
+        humidity_str = file_value[MappingIndex.humidity]
         if humidity_str:
             humidity = float(humidity_str)
             humidity_sum += humidity
@@ -36,3 +37,4 @@ if count > 0:
     print("Average Mean Humidity:", humidity_avg, "%")
 else:
     print("No data available.")
+
